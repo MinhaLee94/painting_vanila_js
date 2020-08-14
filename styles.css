@@ -52,6 +52,16 @@ body {
     display: flex;
 }
 
+.controls__color {
+    margin: 0 3px;
+    transition: transform 100ms ease-out;
+}
+
+.controls__color:hover{
+    transform: scale(1.1);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
 .controls__colors .controls__color {
     width: 50px;
     height: 50px;
