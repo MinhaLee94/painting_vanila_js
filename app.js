@@ -11,7 +11,7 @@ const CANVAS_SIZE = 700;
 canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
 
-ctx.fillStyle = white;
+ctx.fillStyle = "white";
 ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 ctx.strokeStyle = INITIAL_COLOR;
 ctx.fillStyle = INITIAL_COLOR;
@@ -40,19 +40,23 @@ function onMouseMove(event) {
     }
 }
 
+function fillCanvas() {
+    if(filling){
+        ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    }
+}
+
+function banRightClick(event) {
+    event.preventDefault();
+}
+
 if(canvas){
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", startPainting);
     canvas.addEventListener("mouseup", stopPainting);
     canvas.addEventListener("mouseleave", stopPainting);
-    canvas.addEventListener("click", () => {
-        if(filling){
-            ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
-        }
-    });
-    canvas.addEventListener("contextmeu", () => {
-        event.preventDefault();
-    });
+    canvas.addEventListener("click", fillCanvas);
+    canvas.addEventListener("contextmeu", banRightClick);
 }
 
 if(colors){
